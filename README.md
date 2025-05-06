@@ -11,6 +11,7 @@ An iOS application built using Swift, SwiftUI, AVKit, and Google IMA SDK for str
 - Supports seeking, play, pause, and forward/rewind 15s
 - Automatically resumes from last position
 - Proper resource cleanup on exit
+- Auto-resume playback and ad session when app returns from background
 
 ### 🛠 Custom Player Controls
 - Play/Pause button with dynamic icon
@@ -31,6 +32,7 @@ An iOS application built using Swift, SwiftUI, AVKit, and Google IMA SDK for str
 - Dismissal managed via `@Binding var isPresented`
 - Prevents navigation conflicts using single navigation stack
 - Portrait enforced by default, supports landscape during playback
+- Orientation hint UI shown in portrait encouraging landscape for full-screen
 
 ### 🖼 Home Screen UI
 - Two carousels:
@@ -38,6 +40,7 @@ An iOS application built using Swift, SwiftUI, AVKit, and Google IMA SDK for str
   - Vertical (portrait thumbnails)
 - Custom image assets: `robot_portrait` and `robot_landscape`
 - Smooth horizontal scrolling with animations and corner radius
+- Placeholder assets used — replace with production artwork
 
 ### 🔐 Subscription Management
 - Toggle subscription state using a checkbox
@@ -58,6 +61,15 @@ An iOS application built using Swift, SwiftUI, AVKit, and Google IMA SDK for str
 - **Ads:** Google IMA SDK (SPM)
 - **Security:** Keychain
 - **Architecture:** MVVM + Clean Architecture principles
+- **Persistence:** UserDefaults (UI) + Keychain (secure flags)
+- **Concurrency:** GCD (`DispatchQueue`)
+
+---
+
+## 🧪 Testing Notes
+- Ad playback requires a real device (simulator won't trigger IMA ads)
+- Test ad tag is hardcoded in `PlayerViewController.swift`
+- Test orientation handling on both iPhone and iPad
 
 ---
 
